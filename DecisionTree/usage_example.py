@@ -14,8 +14,9 @@ if __name__ == "__main__":
     X = df[:,0:4]
     y = df[:,4]
 
-    forest.fit(X, y)
+    forest.fit(X, y, rows_subset_fraction = 0.15, pbar=True)
     theirForest.fit(X, y)
 
+    print("Accuracy will depend greatly on forest_size, max_depth, and rows_subset_fraction")
     print("Our Accuracy:", accuracy_score(y, forest.predict(X)))
     print("SkLearn Accuracy:", accuracy_score(y, theirForest.predict(X)))

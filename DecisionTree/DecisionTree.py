@@ -27,6 +27,7 @@ class DecisionTree:
 
     def _build(self, rows: "list[list]", depth: int = 0):
         gain, decision = self._find_best_split(rows)
+
         if gain == 0 or depth >= self.max_depth:
             return DecisionLeaf(rows)
 
@@ -53,4 +54,5 @@ class DecisionTree:
                 gain = information_gain(true_rows, false_rows, current_uncertainty)
                 if gain >= best_gain:
                     best_gain, best_decision = gain, decision
+                
         return best_gain, best_decision

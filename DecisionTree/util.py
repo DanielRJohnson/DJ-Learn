@@ -21,11 +21,11 @@ def partition(rows: "list[list]", decision) -> Union[list, list]:
 def gini_impurity(rows: "list[list]") -> float:
     counts = class_counts(rows)
     gini = 1
+    denom = float(len(rows))
     for label in counts:
-        gini -= (counts[label] / float(len(rows)))**2
+        gini -= np.square(counts[label] / denom)
     return gini
 
 def information_gain(left: "list[list]", right: "list[list]", current_uncertainty: float) -> float:
     p = float(len(left)) / (len(left) + len(right))
     return current_uncertainty - p * gini_impurity(left) - (1 - p) * gini_impurity(right)
-
