@@ -14,7 +14,7 @@ class kNNRegressor:
         for row in X:
             # for each row in stored data, take the (n_neighbors) shortest distance stored_rows from row 
             neighbors = np.array(sorted(self.stored_data, key=lambda stored_row: np.linalg.norm(stored_row[:-1]-row))[:self.n_neighbors])
-            # the k nearest neighbors do a weighted average for the continuous output value, sigmoid for numeric stability
+            # the k nearest neighbors do a weighted average on distance for the continuous output value, sigmoid for numeric stability
             weights = 1 / np.array([1 / (1 + np.exp(-np.linalg.norm(stored_row[:-1]-row))) for stored_row in neighbors])
             predictions.append(np.sum(neighbors[:,-1] * (weights)) / np.sum(weights))
         return predictions
