@@ -14,7 +14,7 @@ class GaussianNB:
         # mapping from class_index back to whatever the real value is
         self.class_index_to_class = {index:unique_classes[index] for index in range(len(unique_classes))}
 
-    def predict(self, X: np.ndarray) -> np.ndarray:
+    def predict(self, X: np.ndarray) -> list:
         predictions = []
         for row in X:
             posterior_numerator = np.zeros(self.prior_class_probabilities.shape)

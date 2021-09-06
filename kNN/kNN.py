@@ -9,7 +9,7 @@ class kNNClassifier:
         self.stored_data = np.hstack((X, y.reshape(-1, 1)))
         self.n_neighbors = n_neighbors
 
-    def predict(self, X: np.ndarray) -> np.ndarray:
+    def predict(self, X: np.ndarray) -> list:
         predictions = []
         for row in X:
             # for each row in stored data, take the (n_neighbors) shortest distance stored_rows from row 
